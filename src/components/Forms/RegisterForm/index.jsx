@@ -1,17 +1,48 @@
 import { useForm } from "react-hook-form";
 import { Input } from "../components/Input";
 import { Select } from "../components/Select";
-import { Options } from "../components/Select/Options";
+import { Option } from "../components/Select/Option";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { registerSchema } from "../../schemas/registerSchema";
+import { kenzieHubAPI } from "../../services/index.js"
+import { useNavigate } from "react-router-dom";
 
 export const RegisterFrom = () => {
+  const navigate = useNavigate()
   const { register, handleSubmit, formState: { errors }  } = useForm({
     resolver: zodResolver(registerSchema),
  });
 
- const submit = (formData) => {
-  console.log(formData)
+ const submit = async (formData) => {
+   try {
+    const { data } = await kenzieHubAPI.post("/users", formData)
+    navigate("/")
+
+    Toastify({
+      text: "Conta cadastrada com sucesso!",
+      duration: 3000, 
+      close: true, 
+      gravity: "top",
+      position: "right",
+      stopOnFocus: true,
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      }, 
+    }).showToast();
+  } catch (error) {
+
+    Toastify({
+      text: error.response.data.message,
+      duration: 3000, 
+      close: true, 
+      gravity: "top",
+      position: "right",
+      stopOnFocus: true,
+      style: {
+        background: "red",
+      }, 
+    }).showToast();
+  }
  }
 
   return (
@@ -70,13 +101,11 @@ export const RegisterFrom = () => {
         />
         {errors.contact ? <p>{errors.contact.message}</p> : null}
 
-        <Select name="module" id="select">
-          <Options value="module1" name="Primeiro Módulo" />
-          <Options value="module2" name="Segundo Módulo" />
-          <Options value="module3" name="Terceiro Módulo" />
-          <Options value="module4" name="Quarto Módulo" />
-          <Options value="module5" name="Quinto Módulo" />
-          <Options value="module6" name="Sexto Módulo" />
+        <Select {...register("course_module")} id="select">
+          <Option value="Primeiro módulo (Introdução ao Frontend)"/>
+          <Option value="Segundo módulo (Frontend Avançado)"/>
+          <Option value="Terceiro módulo (Introdução ao Backend)"/>
+          <Option value="Quarto módulo (Backend Avançado)"/>
         </Select>
 
         <button>Cadastrar</button>

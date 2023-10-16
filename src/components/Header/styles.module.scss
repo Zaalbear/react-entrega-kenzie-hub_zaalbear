@@ -1,0 +1,35 @@
+.header__container1 {
+    width: 90%;
+    margin-top: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+    .header__title {
+        color: var(--color-primary);
+    }
+}
+
+.header__container2{
+    width: 90%;
+    margin-top: 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .header__title {
+        color: var(--color-primary);
+    }
+
+    .header__bttn{
+        background-color: var(--gray-3);
+
+        font-size: 10px;
+
+        padding: 0.5rem 1.5rem;
+
+    }
+}

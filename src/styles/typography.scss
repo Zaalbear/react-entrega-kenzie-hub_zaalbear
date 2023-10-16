@@ -1,0 +1,26 @@
+.title1, .title2, .headlineBold, .headline, .paragraph {
+    font-family: var(--primary-font);
+    font-weight: 700;
+
+    &.title1 {
+        font-size: 1.125rem;
+    }
+
+    &.title2 {
+        font-size: 1rem;
+    }
+
+    &.headlineBold {
+        font-size: 0.75rem;
+    }
+
+    &.headline {
+        font-size: 0.75rem;
+        font-weight: 400;
+    }
+
+    &.paragraph {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+}

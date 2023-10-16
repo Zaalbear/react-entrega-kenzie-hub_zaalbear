@@ -1,0 +1,20 @@
+label {
+    color: var(--gray-0);
+}
+
+input {
+    cursor: text;
+
+    color: var(--gray-1);
+
+    border: 1px solid transparent;
+    border-radius: 2px;
+
+    background-color: var(--gray-2);
+
+    &:focus{
+        color: var(--gray-0);
+
+        border-color: var(--gray-0);
+    }
+}

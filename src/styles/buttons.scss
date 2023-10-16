@@ -1,0 +1,26 @@
+button {
+    cursor: pointer;
+    border-radius: 2px;
+    border: none;
+    color: var(--gray-0);
+    
+    &.primary{
+        background-color: var(--color-primary);
+        
+        &:hover {
+            background-color: var(--color-secundary);
+        }
+    
+        &.negative {
+            background-color: var(--color-primary-negative);
+        }
+    }
+
+    &.disabled {
+        background-color: var(--gray-1);
+    
+        &:hover {
+            background-color: var(--gray-2);
+        }
+    }
+}

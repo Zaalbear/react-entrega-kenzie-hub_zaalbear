@@ -1,0 +1,32 @@
+:root {
+    //colors
+    --color-primary: #FF577F;
+    --color-primary-negative: #59323F;
+    --color-secundary: #FF427F;
+
+    --gray-0: #F8F9FA;
+    --gray-1: #868E96;
+    --gray-2: #343B41;
+    --gray-3: #212529;
+    --gray-4: #121214;
+
+    --sucess: #3FE864;
+    --negative: #E83F5B;
+
+    //fonts
+    --primary-font: 'Inter', sans-serif;
+}
+
+body, main, #root {
+    background-color: #121214;
+
+    width: 100%;
+
+    font-family: var(--primary-font);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+}

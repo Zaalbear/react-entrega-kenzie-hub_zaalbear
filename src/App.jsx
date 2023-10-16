@@ -1,11 +1,10 @@
 import { MainRoutes } from "./components/Routes"
+import "./styles/index.scss"
 
 function App() {
  
   return (
-    <div>
       <MainRoutes />
-    </div>
   )
 }
 

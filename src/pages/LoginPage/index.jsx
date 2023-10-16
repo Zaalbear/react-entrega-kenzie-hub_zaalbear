@@ -7,13 +7,6 @@ export const LoginPage = ({ setUserData }) => {
     <>
       <Header backBttn={false} />
       <LoginForm setUserData={setUserData} />
-
-      <div>
-        <p>Ainda não possui uma conta?</p>
-        <Link to="/register">
-          <button>Cadastre-se</button>
-        </Link>
-      </div>
     </>
   );
 };

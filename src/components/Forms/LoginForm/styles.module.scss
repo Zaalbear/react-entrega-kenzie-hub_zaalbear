@@ -34,7 +34,7 @@
       }
 
       .erro__msg {
-        font-size: 10px;
+        font-size: 0.625rem;
         color: var(--negative);
       }
     }
@@ -68,5 +68,11 @@
         padding: 0.5rem;
       }
     }
+  }
+}
+
+@media (min-width: 768px){
+  .main__container{
+    width: 400px;
   }
 }

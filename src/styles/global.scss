@@ -17,7 +17,7 @@
     --primary-font: 'Inter', sans-serif;
 }
 
-body, main, #root {
+html, body, main, #root {
     background-color: #121214;
 
     width: 100%;
@@ -29,4 +29,5 @@ body, main, #root {
     align-items: center;
     justify-content: space-around;
     gap: 1rem;
+
 }

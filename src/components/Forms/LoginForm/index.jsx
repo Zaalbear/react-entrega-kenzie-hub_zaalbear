@@ -20,7 +20,6 @@ export const LoginForm = ({ setUserData }) => {
   const submit = async (formData) => {
     try {
       const { data } = await kenzieHubAPI.post("/sessions", formData);
-      console.log(data);
       localStorage.setItem("@user_token", data.token);
       navigate("/dashboard");
       setUserData(data.user);

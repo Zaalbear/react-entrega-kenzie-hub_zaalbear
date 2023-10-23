@@ -24,7 +24,6 @@ export const LoginForm = ({ setUserData }) => {
       navigate("/dashboard");
       setUserData(data.user);
     } catch (error) {
-      console.log(error);
       Toastify({
         text: error.response.data.message,
         duration: 3000,

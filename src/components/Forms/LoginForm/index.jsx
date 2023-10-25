@@ -1,14 +1,17 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Input } from "../components/Input";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema } from "../../schemas/loginSchema";
-import { kenzieHubAPI } from "../../services/index.js";
 
 import styles from "./styles.module.scss";
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { PageContext } from "../../../providers/PageContext";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema } from "../../schemas/loginSchema/index.js";
 
-export const LoginForm = ({ setUserData }) => {
-  const navigate = useNavigate();
+
+export const LoginForm = () => {
+  const { loginSubmit } = useContext(PageContext)
+
   const {
     register,
     handleSubmit,
@@ -16,30 +19,10 @@ export const LoginForm = ({ setUserData }) => {
   } = useForm({
     resolver: zodResolver(loginSchema),
   });
-
-  const submit = async (formData) => {
-    try {
-      const { data } = await kenzieHubAPI.post("/sessions", formData);
-      localStorage.setItem("@user_token", data.token);
-      navigate("/dashboard");
-      setUserData(data.user);
-    } catch (error) {
-      Toastify({
-        text: error.response.data.message,
-        duration: 3000,
-        close: true,
-        gravity: "top",
-        position: "right",
-        stopOnFocus: true,
-        style: {
-          background: "red",
-        },
-      }).showToast();
-    }
-  };
+  
   return (
     <main className={styles.main__container}>
-      <form className={styles.from__container} onSubmit={handleSubmit(submit)}>
+      <form className={styles.from__container} onSubmit={handleSubmit(loginSubmit)}>
         <h2 className={`${styles.form__title} title2`}>Login</h2>
 
         <div className={styles.inputs__container}>

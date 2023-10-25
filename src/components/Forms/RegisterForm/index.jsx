@@ -1,51 +1,24 @@
-import { useForm } from "react-hook-form";
 import { Input } from "../components/Input";
 import { Select } from "../components/Select";
 import { Option } from "../components/Select/Option";
-import { zodResolver } from "@hookform/resolvers/zod"
-import { registerSchema } from "../../schemas/registerSchema";
-import { kenzieHubAPI } from "../../services/index.js"
-import { useNavigate } from "react-router-dom";
-
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { registerSchema } from "../../schemas/registerSchema/index.js";
+import { useContext } from "react";
+import { PageContext } from "../../../providers/PageContext";
 import styles from "./styles.module.scss";
 
+
 export const RegisterFrom = () => {
-  const navigate = useNavigate()
-  const { register, handleSubmit, formState: { errors }  } = useForm({
+  const { registerSubmit } = useContext(PageContext)
+  
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: zodResolver(registerSchema),
- });
-
- const submit = async (formData) => {
-   try {
-    const { data } = await kenzieHubAPI.post("/users", formData)
-    navigate("/")
-
-    Toastify({
-      text: "Conta cadastrada com sucesso!",
-      duration: 3000, 
-      close: true, 
-      gravity: "top",
-      position: "right",
-      stopOnFocus: true,
-      style: {
-        background: "linear-gradient(to right, #00b09b, #96c93d)",
-      }, 
-    }).showToast();
-  } catch (error) {
-
-    Toastify({
-      text: error.response.data.message,
-      duration: 3000, 
-      close: true, 
-      gravity: "top",
-      position: "right",
-      stopOnFocus: true,
-      style: {
-        background: "red",
-      }, 
-    }).showToast();
-  }
- }
+  });
 
   return (
     <main className={styles.main__container}>
@@ -54,7 +27,7 @@ export const RegisterFrom = () => {
         <p className={`${styles.form__text} headline`}>Rápido e grátis, vamos nessa!</p>
       </div>
 
-      <form className={styles.from__container} onSubmit={handleSubmit(submit)}>
+      <form className={styles.from__container} onSubmit={handleSubmit(registerSubmit)}>
         <Input
           {...register("name")}
           label="Nome"

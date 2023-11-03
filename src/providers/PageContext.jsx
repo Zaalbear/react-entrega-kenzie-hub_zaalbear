@@ -7,6 +7,7 @@ export const PageContext = createContext({});
 export const PageProvider = ({ children }) => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState();
+  const [techList, setTechList] = useState()
 
   useEffect(() => {
     const autoLogin = async () => {
@@ -20,6 +21,7 @@ export const PageProvider = ({ children }) => {
             },
           });
           setUserData(data);
+          setTechList(data.techs)
           navigate("/dashboard");
         } catch (error) {
           console.log(error);
@@ -64,8 +66,9 @@ export const PageProvider = ({ children }) => {
     try {
       const { data } = await kenzieHubAPI.post("/sessions", formData);
       localStorage.setItem("@user_token", data.token);
-      navigate("/dashboard");
       setUserData(data.user);
+      setTechList(data.techs)
+      navigate("/dashboard");
     } catch (error) {
       Toastify({
         text: error.response.data.message,
@@ -84,6 +87,7 @@ export const PageProvider = ({ children }) => {
   const exit = () => {
     localStorage.removeItem("@user_token");
     setUserData("");
+    setTechList(null)
     navigate("/");
   };
 
@@ -94,6 +98,8 @@ export const PageProvider = ({ children }) => {
         loginSubmit,
         registerSubmit,
         exit,
+        techList,
+        setTechList,
       }}
     >
       {children}

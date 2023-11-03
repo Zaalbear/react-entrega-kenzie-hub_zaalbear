@@ -1,0 +1,71 @@
+.modal__overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    width: 100%;
+    height: 100vh;
+  
+    position: fixed;
+    inset: 0;
+  
+    background-color: rgba(0, 0, 0, 0.5);
+
+    .modal__box{
+        width: 90%;
+        
+        position: relative;
+
+        .title__container{
+
+            background-color: var(--gray-2);
+
+            border-radius: 3px 3px 0 0;
+
+            padding: 1rem 0.5rem;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .modal__title{
+                color: var(--gray-0);
+            }
+
+            .close__bttn{
+                background-color: transparent;
+                color: var(--gray-1);
+            }
+
+        }
+
+        .form__container{
+            padding: 1rem 0.5rem;
+            
+            background-color: var(--gray-3);
+            
+            border-radius: 0 0 3px 3px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            .input__box{
+                width: 100%;
+                padding: 0.5rem 0.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .select_box{
+                width: 107%;
+            }
+
+            .modal__bttn{
+                width: 100%;
+                height: 38px;
+                margin-top: 1rem;
+            }
+        }
+    }
+}

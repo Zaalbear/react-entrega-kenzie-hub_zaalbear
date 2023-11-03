@@ -1,6 +1,8 @@
 import styles from "./styles.module.scss";
 import { useContext } from "react";
 import { PageContext } from "../../providers/PageContext";
+import { TechList } from "../../components/TechList";
+import { TechProvider } from "../../providers/TechContext";
 
 export const Dashboard = () => {
   const { userData, exit } = useContext(PageContext);
@@ -26,12 +28,9 @@ export const Dashboard = () => {
       </div>
 
       <div className={styles.main__container}>
-        <h2 className={`${styles.main__title} title1`}>
-          Que pena! Estamos em desenvolvimento :(
-        </h2>
-        <p className={`${styles.main__text} paragrath`}>
-          Nossa aplicação está em desenvolviment, em breve teremos novidades
-        </p>
+        <TechProvider>
+          <TechList />
+        </TechProvider>
       </div>
     </div>
   );

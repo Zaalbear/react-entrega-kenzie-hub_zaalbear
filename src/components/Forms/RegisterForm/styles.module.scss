@@ -25,7 +25,7 @@
   }
 
   .from__container {
-    width: 100%;
+    width: 90%;
 
     display: flex;
     flex-direction: column;
@@ -45,11 +45,36 @@
       width: 90%;
       padding: 0.5rem;
     }
+
+    .select__container{
+      width: 100%;
+  
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+  
+      .select__label{
+          color: var(--gray-0);
+      }
+  
+      .select__box{
+          width: 100%;
+
+          background-color: var(--gray-2);
+  
+          padding: 0.5rem 0.5rem;
+  
+          border: none;
+          border-radius: 2px;
+  
+          color: var(--gray-1);
+      }
+  }
   }
 }
 
 @media (min-width: 768px){
     .main__container{
-        width: 400px;
+        width: 369px;
     }
   }

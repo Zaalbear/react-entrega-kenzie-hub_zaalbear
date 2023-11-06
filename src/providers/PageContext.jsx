@@ -7,7 +7,7 @@ export const PageContext = createContext({});
 export const PageProvider = ({ children }) => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState();
-  const [techList, setTechList] = useState()
+  const [techList, setTechList] = useState([])
 
   useEffect(() => {
     const autoLogin = async () => {

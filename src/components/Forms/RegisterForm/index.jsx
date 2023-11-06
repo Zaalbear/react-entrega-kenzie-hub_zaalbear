@@ -1,6 +1,4 @@
 import { Input } from "../components/Input";
-import { Select } from "../components/Select";
-import { Option } from "../components/Select/Option";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "../../schemas/registerSchema/index.js";
@@ -82,12 +80,21 @@ export const RegisterFrom = () => {
         />
         {errors.contact ? <p className={styles.erro__msg}>{errors.contact.message}</p> : null}
 
-        <Select {...register("course_module")} id="select">
-          <Option value="Primeiro módulo (Introdução ao Frontend)" text="Primeiro módulo"/>
-          <Option value="Segundo módulo (Frontend Avançado)" text="Segundo módulo"/>
-          <Option value="Terceiro módulo (Introdução ao Backend)" text="Terceiro módulo"/>
-          <Option value="Quarto módulo (Backend Avançado)" text="Quarto módulo"/>
-        </Select>
+        <div className={styles.select__container}>
+              <label className={`${styles.select__label} headline`}>
+                Selecionar Modulo
+              </label>
+              <select
+                className={styles.select__box}
+                {...register("status")}
+                id="statusSelect"
+              >
+                <option value="Primeiro módulo (Introdução ao Frontend)">Primeiro módulo</option>
+                <option value="Segundo módulo (Frontend Avançado)">Segundo módulo</option>
+                <option value="Terceiro módulo (Introdução ao Backend)">Terceiro módulo</option>
+                <option value="Quarto módulo (Backend Avançado)">Quarto módulo</option>
+              </select>
+        </div>
 
         <button className={`${styles.form__bttn} primary negative`}>Cadastrar</button>
       </form>

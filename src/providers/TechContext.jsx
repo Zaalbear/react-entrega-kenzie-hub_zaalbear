@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { PageContext } from "./PageContext";
 import { kenzieHubAPI } from "../components/services";
 
@@ -8,6 +8,18 @@ export const TechProvider = ({ children }) => {
   const [editingTech, setEditingTech] = useState(null);
   const { techList, setTechList } = useContext(PageContext);
   const token = localStorage.getItem("@user_token");
+
+  useEffect(() => {
+    const getTech = async () => {
+      const { data } = await kenzieHubAPI.get('/profile', {
+        headers: {
+          authorization: `Bearer ${token}`,
+        }
+      })
+      setTechList(data.techs)
+    }
+    getTech()
+  }, [])
 
   const createTech = async (formData) => {
     try {

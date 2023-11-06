@@ -11,7 +11,6 @@ export const TechList = () => {
   const { editingTech } = useContext(TechContext)
   const [openModal, setOpenModal] = useState(false);
 
-  console.log(techList)
   return (
     <>
       <div className={styles.techs__container}>
